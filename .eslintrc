@@ -1,0 +1,77 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:@typescript-eslint/recommended",
+    "eslint-config-prettier",
+    "prettier"
+  ],
+  "plugins": ["prettier", "simple-import-sort"],
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/resolver": {
+      "node": {
+        "paths": ["<current-directory-path>"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    }
+  },
+  "env": {
+    "node": true
+  },
+  "rules": {
+    "no-console": "warn",
+    "no-use-before-define": "error",
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "import/named": "off",
+    "react/jsx-uses-react": "error",
+    "react/jsx-uses-vars": "error",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-no-target-blank": "warn",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "react-hooks/exhaustive-deps": "off",
+    "import/no-unresolved": [
+      "error",
+      {
+        "ignore": ["^@", "^~"]
+      }
+    ],
+    "prettier/prettier": [
+      "warn",
+      {
+        "arrowParens": "avoid",
+        "semi": true,
+        "endOfLine": "auto",
+        "tabWidth": 2,
+        "useTabs": false,
+        "singleQuote": true,
+        "printWidth": 100,
+        "jsxSingleQuote": false,
+        "singleAttributePerLine": true,
+        "noImplicitAny": false
+      }
+    ],
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-empty-function": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "jsx-a11y/no-static-element-interactions": "off",
+    "react-hooks/rules-of-hooks": "error",
+    "endOfLine": 0,
+    "object-curly-newline": [
+      "error",
+      {
+        "consistent": true
+      }
+    ]
+  }
+}

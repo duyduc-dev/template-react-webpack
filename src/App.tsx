@@ -1,0 +1,9 @@
+import '~/assets/styles/app.scss';
+
+import * as React from 'react';
+
+function App() {
+  return <div>App</div>;
+}
+
+export default App;
