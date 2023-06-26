@@ -1,5 +1,5 @@
 {
-  "arrowParens": "avoid",
+  "arrowParens": "always",
   "semi": true,
   "endOfLine": "lf",
   "tabWidth": 2,

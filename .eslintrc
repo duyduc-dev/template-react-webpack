@@ -26,7 +26,7 @@
   },
   "rules": {
     "no-console": "warn",
-    "no-use-before-define": "error",
+    "no-use-before-define": "off",
     "simple-import-sort/imports": "error",
     "simple-import-sort/exports": "error",
     "import/first": "error",
@@ -49,7 +49,7 @@
     "prettier/prettier": [
       "warn",
       {
-        "arrowParens": "avoid",
+        "arrowParens": "always",
         "semi": true,
         "endOfLine": "auto",
         "tabWidth": 2,
