@@ -1,6 +1,49 @@
 import dayjs from 'dayjs';
+import moment from 'moment';
+import { MutableRefObject, RefCallback } from 'react';
+
+export const phoneRegex = new RegExp(/^(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
+export const DecimalRegex = '^d*(.d{0,2})?$';
+
+export const checkHas8Characters = (str: string) => {
+  const regex = /^.{8,}$/;
+  return str.match(regex);
+};
+
+export const checkHasOneLowerCase = (str: string) => {
+  const regex = /^(?=.*[a-z]).+$/;
+  return str.match(regex);
+};
+
+export const checkHasOneUpperCase = (str: string) => {
+  const regex = /^(?=.*[A-Z]).+$/;
+  return str.match(regex);
+};
+
+export const checkHasOneNumOrOneSymbol = (str: string) => {
+  const regex = /([0-9]|[!@#$%^&*])/;
+  return str.match(regex);
+};
 
 export const removeFirstSlash = (path: string) => (path[0] === '/' ? path.slice(1) : path);
+
+export const sleep = (ms: number) => {
+  return new Promise<void>((resolve) => setTimeout(resolve, ms));
+};
+
+export function formatDate(date: string | Date | null, format = 'YYYY/MM/DD') {
+  if (!date) {
+    return '';
+  }
+  let newDate = date;
+  if (typeof date === 'string') {
+    newDate = new Date(date);
+    if (newDate.toString() === 'Invalid Date') {
+      newDate = new Date(moment(date, format).toDate());
+    }
+  }
+  return moment(newDate).format(format);
+}
 
 export const getEmailFromString = (str: string) => {
   const regex =
@@ -83,11 +126,30 @@ export function formatMoney(
       : '')
   );
 }
+
+export function formatCurrency(value, currencySymbol = '$', decimalPlaces = 2) {
+  const formatter = new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: decimalPlaces,
+  });
+
+  return formatter.format(value).replace('$', currencySymbol);
+}
+
+export const generateId = (length: number): string => {
+  let result = '';
+  const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  const charactersLength = characters.length;
+  for (let i = 0; i < length; i++) {
+    result += characters.charAt(Math.floor(Math.random() * charactersLength));
+  }
+  return result;
+};
+
 export function parseTime(date: Date | string, dateFormat = 'YYYY-MM-DD') {
   return dayjs(date).format(dateFormat);
 }
-
-export const phoneRegex = new RegExp(/^(\d{3}|[(]?[0-9]+[)])?([-]?[\s]?[0-9])+$/);
 
 export function applyAlphaToColorHex(hexColor: string, alpha = 1) {
   const red = parseInt(hexColor.substring(1, 3), 16);
@@ -119,4 +181,22 @@ export function scaleSize(
     return Math.floor((newSize * originalSize.width) / originalSize.height);
   }
   return Math.floor((newSize * originalSize.height) / originalSize.width);
+}
+
+type MutableRefList<T> = Array<RefCallback<T> | MutableRefObject<T> | undefined | null>;
+
+export function mergeRefs<T>(...refs: MutableRefList<T>): RefCallback<T> {
+  return (val: T) => {
+    setRef(val, ...refs);
+  };
+}
+
+export function setRef<T>(val: T, ...refs: MutableRefList<T>): void {
+  refs.forEach((ref) => {
+    if (typeof ref === 'function') {
+      ref(val);
+    } else if (ref != null) {
+      ref.current = val;
+    }
+  });
 }
