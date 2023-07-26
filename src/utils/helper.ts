@@ -1,4 +1,5 @@
 import dayjs from 'dayjs';
+import relativeTime from 'dayjs/plugin/relativeTime';
 import moment from 'moment';
 import { MutableRefObject, RefCallback } from 'react';
 
@@ -256,4 +257,9 @@ export const isToday = (date: Date | string) => {
 
 export const clearNumber = (value = '') => {
   return value.replace(/\D+/g, '');
+};
+
+export const parseFromNowDate = (date: string) => {
+  dayjs.extend(relativeTime);
+  return dayjs(date).fromNow(true);
 };
