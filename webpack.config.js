@@ -19,7 +19,8 @@ module.exports = (env, argv) => {
   const config = {
     resolve: {
       alias: {
-        '~': path.resolve(__dirname, './src'),
+        '@': path.resolve(__dirname, './src'),
+        '~': path.resolve(__dirname, './'),
       },
       extensions: ['.tsx', '.ts', '.jsx', '.js', '.css', '.scss'],
     },

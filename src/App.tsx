@@ -1,4 +1,4 @@
-import '~/assets/styles/app.scss';
+import '@/assets/styles/app.scss';
 
 import * as React from 'react';
 

@@ -5,10 +5,10 @@ import axios, {
   InternalAxiosRequestConfig,
 } from 'axios';
 
-import Router from '~/constants/router';
-import StatusCode from '~/constants/statusCode';
-import storage from '~/utils/storage';
-import { StorageKey } from '~/utils/storage/types';
+import Router from '@/constants/router';
+import StatusCode from '@/constants/statusCode';
+import storage from '@/utils/storage';
+import { StorageKey } from '@/utils/storage/types';
 
 export class HttpClient {
   private axiosInstance: AxiosInstance;

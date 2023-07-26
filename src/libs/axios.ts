@@ -1,9 +1,9 @@
 import Axios, { AxiosRequestConfig } from 'axios';
 
-import Router from '~/constants/router';
-import StatusCode from '~/constants/statusCode';
-import storage from '~/utils/storage';
-import { StorageKey } from '~/utils/storage/types';
+import Router from '@/constants/router';
+import StatusCode from '@/constants/statusCode';
+import storage from '@/utils/storage';
+import { StorageKey } from '@/utils/storage/types';
 
 function authRequestInterceptor<T>(config: AxiosRequestConfig<T>) {
   const token = storage.getToken();

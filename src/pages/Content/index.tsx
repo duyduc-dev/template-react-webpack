@@ -1,8 +1,8 @@
 import * as React from 'react';
 
-import MyButton from '~/components/Button';
-import Router from '~/constants/router';
-import useRouter from '~/hooks/useRouter';
+import MyButton from '@/components/Button';
+import Router from '@/constants/router';
+import useRouter from '@/hooks/useRouter';
 
 const Content: React.FC = () => {
   const router = useRouter();

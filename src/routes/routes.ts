@@ -1,6 +1,6 @@
-import Router from '~/constants/router';
-import Content from '~/pages/Content';
-import Home from '~/pages/Home';
+import Router from '@/constants/router';
+import Content from '@/pages/Content';
+import Home from '@/pages/Home';
 
 import { RouteConfig } from './types';
 

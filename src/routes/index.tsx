@@ -1,8 +1,8 @@
 import React from 'react';
 import { createBrowserRouter, createRoutesFromElements, Route } from 'react-router-dom';
 
-import EmptyLayout from '~/layouts/EmptyLayout';
-import NotFoundPage from '~/pages/NotFound';
+import EmptyLayout from '@/layouts/EmptyLayout';
+import NotFoundPage from '@/pages/NotFound';
 
 import { privateRoutes } from './routes';
 import { RouteConfig } from './types';
